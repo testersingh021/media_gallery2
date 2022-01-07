@@ -127,7 +127,7 @@ class _MediaVideoPlayerState extends State<MediaVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return _controller != null && _controller.value.initialized
+    return _controller != null && _controller.value.isInitialized
         ? Column(
             children: <Widget>[
               Expanded(

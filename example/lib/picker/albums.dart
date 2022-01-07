@@ -47,7 +47,7 @@ class MediaAlbums extends StatelessWidget {
     return ListView.separated(
       separatorBuilder: (context, i) => Container(
         height: 1,
-        color: theme.textTheme.body1.color.withOpacity(0.12),
+        color: theme.textTheme.bodyText1.color.withOpacity(0.12),
       ),
       itemBuilder: (context, i) => children[i],
       itemCount: children.length,
@@ -84,7 +84,7 @@ class AlbumTile extends StatelessWidget {
                   child: Container(
                     width: 64,
                     height: 64,
-                    color: theme.textTheme.subhead.color.withOpacity(0.1),
+                    color: theme.textTheme.bodyText1.color.withOpacity(0.1),
                     child:
                         MediaCollectionThumbnailImage(collection: collection),
                   ),
@@ -99,7 +99,7 @@ class AlbumTile extends StatelessWidget {
                     children: [
                       Text(
                         collection.name,
-                        style: theme.textTheme.subhead,
+                        style: theme.textTheme.bodyText1,
                       ),
                       Text(
                         '${collection.count} ${labels.items}',

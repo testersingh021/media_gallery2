@@ -1,4 +1,4 @@
-package com.example.media_gallery_example
+package com.example.media_gallery_example2
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
