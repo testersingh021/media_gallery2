@@ -1,6 +1,6 @@
 # Media Gallery plugin for Flutter
 
-[![pub package](https://img.shields.io/pub/v/media_gallery.svg)](https://pub.dartlang.org/packages/media_gallery)
+[![pub package](https://img.shields.io/pub/v/media_gallery2.svg)](https://pub.dartlang.org/packages/media_gallery2)
 
 A Flutter plugin that lists native gallery items.
 
