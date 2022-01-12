@@ -6,7 +6,7 @@ A Flutter plugin that lists native gallery items.
 
 ## Installation
 
-First, add `media_gallery` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+First, add `media_gallery2` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
 ### iOS
 

@@ -1,3 +1,9 @@
+## 0.1.7
+
+* Fixed Some issues. And updated Pod files
+## 0.1.6
+
+* Fixed Some issues.
 ## 0.1.5
 
 * Fixed Some issues.
