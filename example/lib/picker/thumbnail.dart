@@ -2,7 +2,7 @@ import 'package:transparent_image/transparent_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 
 class MediaThumbnailImage extends StatelessWidget {
   final Media media;

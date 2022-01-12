@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 
 class MediaPickerSelection extends ChangeNotifier {
   final List<Media> selectedMedias;

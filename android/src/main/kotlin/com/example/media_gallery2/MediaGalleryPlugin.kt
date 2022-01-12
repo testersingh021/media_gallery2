@@ -18,7 +18,7 @@ import java.io.ByteArrayOutputStream
 /** MediaGalleryPlugin */
 class MediaGalleryPlugin: FlutterPlugin, MethodCallHandler {
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    val channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "media_gallery")
+    val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "media_gallery")
     val plugin = MediaGalleryPlugin()
     plugin.context = flutterPluginBinding.applicationContext
     channel.setMethodCallHandler(plugin)
@@ -46,64 +46,64 @@ class MediaGalleryPlugin: FlutterPlugin, MethodCallHandler {
 
   private var context: Context? = null
 
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    when {
-        call.method == "listMediaCollections" -> {
-          val mediaTypes = call.argument<List<String>>("mediaTypes")
+  override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+      when (call.method) {
+          "listMediaCollections" -> {
+              val mediaTypes = call.argument<List<String>>("mediaTypes")
 
-          doAsync({
-            listMediaCollections(mediaTypes!!)
-          }, { v ->
-            result.success(v)
-          })
-        }
-        call.method == "listMedias" -> {
-          val collectionId = call.argument<String>("collectionId")
-          val skip = call.argument<Int>("skip")
-          val take = call.argument<Int>("take")
-          val mediaType = call.argument<String>("mediaType") ?: "image"
-          doAsync({
-            when (mediaType) {
-              "image" -> listImages(collectionId!!, skip, take)
-              "video" -> listVideos(collectionId!!, skip, take)
-              else  -> null
-            }
-          }, { v ->
-            result.success(v)
-          })
-        }
-        call.method == "getMediaThumbnail"-> {
-          val mediaId = call.argument<String>("mediaId")
-          val mediaType = call.argument<String>("mediaType") ?: "image"
-          doAsync({
-            when (mediaType) {
-              "image" -> getImageThumbnail(mediaId!!)
-              "video" -> getVideoThumbnail(mediaId!!)
-              else -> null
-            }
-          }, { v ->
-            result.success(v)
-          })
-        }
-        call.method == "getCollectionThumbnail"-> {
-          val collectionId = call.argument<String>("collectionId")
-          doAsync({
-            getCollectionThumbnail(collectionId!!)
-          }, { v ->
-            result.success(v)
-          })
-        }
-        call.method == "getMediaFile" -> {
-          val mediaId = call.argument<String>("mediaId")
-          val mediaType = call.argument<String>("mediaType") ?: "image"
-          when (mediaType) {
-            "image" -> result.success(getImageFile(mediaId!!))
-            "video" -> result.success(getVideoFile(mediaId!!))
-            else -> result.notImplemented()
+              doAsync({
+                  listMediaCollections(mediaTypes!!)
+              }, { v ->
+                  result.success(v)
+              })
           }
-        }
-        else -> result.notImplemented()
-    }
+          "listMedias" -> {
+              val collectionId = call.argument<String>("collectionId")
+              val skip = call.argument<Int>("skip")
+              val take = call.argument<Int>("take")
+              val mediaType = call.argument<String>("mediaType") ?: "image"
+              doAsync({
+                  when (mediaType) {
+                      "image" -> listImages(collectionId!!, skip, take)
+                      "video" -> listVideos(collectionId!!, skip, take)
+                      else  -> null
+                  }
+              }, { v ->
+                  result.success(v)
+              })
+          }
+          "getMediaThumbnail" -> {
+              val mediaId = call.argument<String>("mediaId")
+              val mediaType = call.argument<String>("mediaType") ?: "image"
+              doAsync({
+                  when (mediaType) {
+                      "image" -> getImageThumbnail(mediaId!!)
+                      "video" -> getVideoThumbnail(mediaId!!)
+                      else -> null
+                  }
+              }, { v ->
+                  result.success(v)
+              })
+          }
+          "getCollectionThumbnail" -> {
+              val collectionId = call.argument<String>("collectionId")
+              doAsync({
+                  getCollectionThumbnail(collectionId!!)
+              }, { v ->
+                  result.success(v)
+              })
+          }
+          "getMediaFile" -> {
+              val mediaId = call.argument<String>("mediaId")
+              val mediaType = call.argument<String>("mediaType") ?: "image"
+              when (mediaType) {
+                  "image" -> result.success(getImageFile(mediaId!!))
+                  "video" -> result.success(getVideoFile(mediaId!!))
+                  else -> result.notImplemented()
+              }
+          }
+          else -> result.notImplemented()
+      }
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {

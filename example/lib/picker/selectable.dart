@@ -36,7 +36,7 @@ class Selectable extends StatelessWidget {
                 child: AnimatedContainer(
                   duration: duration,
                   curve: Curves.easeInOut,
-                  color: theme.accentColor.withOpacity(isSelected ? 0.4 : 0),
+                  color: theme.colorScheme.secondary.withOpacity(isSelected ? 0.4 : 0),
                 ),
               ),
               AnimatedOpacity(
@@ -45,7 +45,7 @@ class Selectable extends StatelessWidget {
                 child: Center(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: theme.accentColor,
+                      color: theme.colorScheme.secondary,
                       shape: BoxShape.circle,
                     ),
                     padding: const EdgeInsets.all(4.0),

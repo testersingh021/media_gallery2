@@ -135,13 +135,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
-  media_gallery:
+  media_gallery2:
     dependency: "direct dev"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.1.5"
   meta:
     dependency: transitive
     description:

@@ -27,11 +27,11 @@ class PickerValidateButton extends StatelessWidget {
                     .color,
                 borderRadius: BorderRadius.circular(100),
                 child: InkWell(
-                  focusColor: theme.accentColor.withOpacity(0.2),
-                  hoverColor: theme.accentColor.withOpacity(0.1),
-                  highlightColor: theme.accentColor.withOpacity(0.5),
+                  focusColor: theme.colorScheme.secondary.withOpacity(0.2),
+                  hoverColor: theme.colorScheme.secondary.withOpacity(0.1),
+                  highlightColor: theme.colorScheme.secondary.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(100),
-                  splashColor: theme.accentColor.withOpacity(0.5),
+                  splashColor: theme.colorScheme.secondary.withOpacity(0.5),
                   onTap: selection.selectedMedias.isNotEmpty
                       ? () => onValidate(selection)
                       : null,
@@ -45,7 +45,7 @@ class PickerValidateButton extends StatelessWidget {
                             selection.selectedMedias.length.toString(),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: theme.accentColor,
+                              color: theme.colorScheme.secondary,
                             ),
                           ),
                           SizedBox(
@@ -54,7 +54,7 @@ class PickerValidateButton extends StatelessWidget {
                         ],
                         Icon(
                           Icons.check,
-                          color: theme.accentColor,
+                          color: theme.colorScheme.secondary,
                         ),
                       ],
                     ),

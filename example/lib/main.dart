@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 import 'package:media_gallery_example/picker/picker.dart';
 import 'package:media_gallery_example/picker/selection.dart';
 

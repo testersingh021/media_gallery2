@@ -2,8 +2,7 @@ import 'dart:io';
 
 import 'package:exif/exif.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:video_player/video_player.dart';
 

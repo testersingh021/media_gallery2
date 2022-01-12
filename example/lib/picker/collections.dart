@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'labels.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 
 import 'albums.dart';
 import 'selection.dart';
@@ -49,11 +49,11 @@ class _MediaCollectionsPageState extends State<MediaCollectionsPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(labels.collectionsTitle),
-          actions: <Widget>[
-            PickerValidateButton(
-              onValidate: (selection) => Navigator.pop(context, selection),
-            ),
-          ],
+          // actions: <Widget>[
+          //   PickerValidateButton(
+          //     onValidate: (selection) => Navigator.pop(context, selection),
+          //   ),
+          // ],
           bottom: TabBar(
             tabs: [
               ...selection.mediaTypes.map(

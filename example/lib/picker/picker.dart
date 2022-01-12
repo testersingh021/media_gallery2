@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'collections.dart';
@@ -46,13 +46,14 @@ class MediaPicker extends StatefulWidget {
             await Permission.photos.request().isGranted)) {
       final result = await Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => MediaPicker(
-            labels: labels,
-            initialSelection: MediaPickerSelection(
+        MaterialPageRoute(builder: (context) =>
+            MediaPicker(
+              labels: labels,
+              initialSelection:
+              MediaPickerSelection(
               mediaTypes: [
                 MediaType.image,
-                //MediaType.video,
+                MediaType.video,
               ],
               maxItems: 10,
             ),

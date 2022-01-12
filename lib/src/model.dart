@@ -15,6 +15,9 @@ class MediaCollection {
   /// Indicates whether this collection contains all medias.
   bool get isAllCollection => id == "__ALL__";
 
+
+  MediaCollection(this.id, this.name, this.count);
+
   /// Creates a range of media from platform channel protocol.
   MediaCollection.fromJson(dynamic json)
       : id = json['id'],

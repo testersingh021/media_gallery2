@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:media_gallery/media_gallery.dart';
+import 'package:media_gallery2/media_gallery2.dart';
 
 import 'labels.dart';
-import 'selection.dart';
-import 'validate.dart';
 import 'selectable.dart';
+import 'selection.dart';
 import 'thumbnail.dart';
+import 'validate.dart';
 
 class MediasPage extends StatefulWidget {
   final MediaCollection collection;
+
   MediasPage({
     @required this.collection,
   });
@@ -65,6 +66,7 @@ class _MediaImagesPageState extends State<MediasPage> {
 class MediaGrid extends StatefulWidget {
   final MediaCollection collection;
   final MediaType mediaType;
+
   MediaGrid({
     Key key,
     @required this.mediaType,
@@ -119,7 +121,8 @@ class _MediaGridState extends State<MediaGrid>
     try {
       final nextPage = await pages.last.nextPage();
       pages.add(nextPage);
-    } catch (e) {} finally {
+    } catch (e) {
+    } finally {
       setState(() {
         isLoading = false;
       });
