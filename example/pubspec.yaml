@@ -1,5 +1,5 @@
-name: media_gallery_example
-description: Demonstrates how to use the media_gallery plugin.
+name: media_gallery2_example
+description: Demonstrates how to use the media_gallery2 plugin.
 publish_to: 'none'
 
 environment:

@@ -1,3 +1,15 @@
+## 0.1.11
+* Handle android 10 & 11 issue with 'Invalid token LIMIT' 
+
+## 0.1.10
+
+* Fixed Some issues. And updated Pod files
+## 0.1.9
+
+* Fixed Some issues. And updated Pod files
+## 0.1.8
+
+* Fixed Some issues. And updated Pod files
 ## 0.1.7
 
 * Fixed Some issues. And updated Pod files
