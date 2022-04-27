@@ -69,7 +69,7 @@ class MediaPage {
   final int? start;
 
   /// The total number of items.
-  final int? total;
+  final int total;
 
   /// The current items.
   final List<Media> items;
@@ -78,12 +78,12 @@ class MediaPage {
   int get end => (start ?? 0) + items.length;
 
   ///Indicates whether this page is the last in the collection.
-  bool get isLast => end >= (total ?? 0);
+  bool get isLast => end >= total;
 
   /// Creates a range of media from platform channel protocol.
   MediaPage.fromJson(this.collection, this.mediaType, dynamic json)
       : start = int.tryParse('${json['start']}'),
-        total = int.tryParse('${json['total']}'),
+        total = int.tryParse('${json['total']}') ?? 0,
         items = (json['items'] as List<dynamic>).map<Media>((x) => Media.fromJson(x)).toList();
 
   /// Gets the next page of medias in the collection.
