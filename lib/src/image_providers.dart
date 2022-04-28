@@ -19,11 +19,10 @@ class MediaThumbnailProvider extends ImageProvider<MediaThumbnailProvider> {
     );
   }
 
-  Future<ui.Codec> _loadAsync(
-      MediaThumbnailProvider key, DecoderCallback decode) async {
+  Future<ui.Codec> _loadAsync(MediaThumbnailProvider key, DecoderCallback decode) async {
     assert(key == this);
     final bytes = await media.getThumbnail();
-    if (bytes.length == 0) return await decode([] as Uint8List);
+    if (bytes != null && bytes.length == 0) return await decode([] as Uint8List);
 
     return await decode(bytes as Uint8List);
   }
@@ -48,8 +47,7 @@ class MediaThumbnailProvider extends ImageProvider<MediaThumbnailProvider> {
 }
 
 /// Fetches the given media collection thumbnail from the gallery.
-class MediaCollectionThumbnailProvider
-    extends ImageProvider<MediaCollectionThumbnailProvider> {
+class MediaCollectionThumbnailProvider extends ImageProvider<MediaCollectionThumbnailProvider> {
   const MediaCollectionThumbnailProvider({
     required this.collection,
   }) : assert(collection != null);
@@ -67,8 +65,7 @@ class MediaCollectionThumbnailProvider
     );
   }
 
-  Future<ui.Codec> _loadAsync(
-      MediaCollectionThumbnailProvider key, DecoderCallback decode) async {
+  Future<ui.Codec> _loadAsync(MediaCollectionThumbnailProvider key, DecoderCallback decode) async {
     assert(key == this);
     final bytes = await collection.getThumbnail();
     if (bytes == null || bytes.length == 0) return await decode(kTransparentImageBytes);
@@ -77,8 +74,7 @@ class MediaCollectionThumbnailProvider
   }
 
   @override
-  Future<MediaCollectionThumbnailProvider> obtainKey(
-      ImageConfiguration configuration) {
+  Future<MediaCollectionThumbnailProvider> obtainKey(ImageConfiguration configuration) {
     return SynchronousFuture<MediaCollectionThumbnailProvider>(this);
   }
 
@@ -118,8 +114,7 @@ class MediaImageProvider extends ImageProvider<MediaImageProvider> {
     );
   }
 
-  Future<ui.Codec> _loadAsync(
-      MediaImageProvider key, DecoderCallback decode) async {
+  Future<ui.Codec> _loadAsync(MediaImageProvider key, DecoderCallback decode) async {
     assert(key == this);
     final file = await media.getFile();
     if (file == null) return await decode([] as Uint8List);
@@ -148,7 +143,6 @@ class MediaImageProvider extends ImageProvider<MediaImageProvider> {
   @override
   String toString() => '$runtimeType("${media.id}")';
 }
-
 
 final Uint8List kTransparentImageBytes = new Uint8List.fromList(<int>[
   0x89,

@@ -129,7 +129,7 @@ class Media {
             : null;
 
   /// Get a JPEG thumbnail's data for this media.
-  Future<List<int>> getThumbnail({
+  Future<List<int>?> getThumbnail({
     int? width,
     int? height,
     bool highQuality = false,

@@ -48,7 +48,7 @@ class MediaGallery {
     return MediaPage.fromJson(collection, mediaType, json);
   }
 
-  static Future<List<int>> _getMediaThumbnail({
+  static Future<List<int>?> _getMediaThumbnail({
     required String? mediaId,
     MediaType? mediaType,
     int? width,
