@@ -24,9 +24,8 @@ class MediaGallery {
     final json = await _channel.invokeMethod('listMediaCollections', {
       'mediaTypes': mediaTypes.map((x) => _mediaTypeToJson(x)).toList(),
     });
-    return json
-        .map<MediaCollection>((x) => MediaCollection.fromJson(x))
-        .toList();
+
+    return json.map<MediaCollection>((x) => MediaCollection.fromJson(x)).toList();
   }
 
   static Future<MediaPage> _listMedias({
@@ -45,8 +44,8 @@ class MediaGallery {
     return MediaPage.fromJson(collection, mediaType, json);
   }
 
-  static Future<List<int>> _getMediaThumbnail({
-    required String mediaId,
+  static Future<List<int>?> _getMediaThumbnail({
+    required String? mediaId,
     MediaType? mediaType,
     int? width,
     int? height,
@@ -64,7 +63,7 @@ class MediaGallery {
   }
 
   static Future<List<int>> _getCollectionThumbnail({
-    required String collectionId,
+    required String? collectionId,
     int? width,
     int? height,
     bool? highQuality,

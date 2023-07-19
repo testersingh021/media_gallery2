@@ -4,10 +4,10 @@ part of media_gallery;
 @immutable
 class MediaCollection {
   /// A unique identifier for the collection.
-  final String id;
+  final String? id;
 
   /// The name of the collection.
-  final String name;
+  final String? name;
 
   /// The total number of medias in the collection.
   final int count;
@@ -15,14 +15,13 @@ class MediaCollection {
   /// Indicates whether this collection contains all medias.
   bool get isAllCollection => id == "__ALL__";
 
-
   MediaCollection(this.id, this.name, this.count);
 
   /// Creates a range of media from platform channel protocol.
   MediaCollection.fromJson(dynamic json)
-      : id = json['id'],
-        name = json['name'],
-        count = json['count'];
+      : id = '${json['id']}',
+        name = '${json['name']}',
+        count = int.tryParse('${json['count']}') ?? 0;
 
   /// Get media of the given [mediaType].
   ///
@@ -67,7 +66,7 @@ class MediaPage {
   final MediaType mediaType;
 
   /// The start offset for those medias.
-  final int start;
+  final int? start;
 
   /// The total number of items.
   final int total;
@@ -76,16 +75,16 @@ class MediaPage {
   final List<Media> items;
 
   /// The end index in the collection.
-  int get end => start + items.length;
+  int get end => (start ?? 0) + items.length;
 
   ///Indicates whether this page is the last in the collection.
   bool get isLast => end >= total;
 
   /// Creates a range of media from platform channel protocol.
   MediaPage.fromJson(this.collection, this.mediaType, dynamic json)
-      : start = json['start'],
-        total = json['total'],
-        items = json['items'].map<Media>((x) => Media.fromJson(x)).toList();
+      : start = int.tryParse('${json['start']}'),
+        total = int.tryParse('${json['total']}') ?? 0,
+        items = (json['items'] as List<dynamic>).map<Media>((x) => Media.fromJson(x)).toList();
 
   /// Gets the next page of medias in the collection.
   Future<MediaPage> nextPage() {
@@ -111,25 +110,26 @@ class Media {
   final MediaType mediaType;
 
   /// The media width.
-  final int width;
+  final int? width;
 
   /// The media height.
-  final int height;
+  final int? height;
 
   /// The date at which the photo or video was taken.
-  final DateTime creationDate;
+  final DateTime? creationDate;
 
   /// Creates a media from platform channel protocol.
   Media.fromJson(dynamic json)
       : id = json["id"],
         mediaType = _jsonToMediaType(json["mediaType"]),
-        width = json["width"],
-        height = json["height"],
-        creationDate =
-            DateTime.fromMillisecondsSinceEpoch(json["creationDate"] * 1000);
+        width = int.tryParse('${json["width"]}'),
+        height = int.tryParse('${json["height"]}'),
+        creationDate = int.tryParse('${json["creationDate"]}') != null
+            ? DateTime.fromMillisecondsSinceEpoch(int.tryParse('${json["creationDate"]}')! * 1000)
+            : null;
 
   /// Get a JPEG thumbnail's data for this media.
-  Future<List<int>> getThumbnail({
+  Future<List<int>?> getThumbnail({
     int? width,
     int? height,
     bool highQuality = false,
