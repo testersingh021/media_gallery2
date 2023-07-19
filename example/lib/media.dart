@@ -135,7 +135,7 @@ class _MediaVideoPlayerState extends State<MediaVideoPlayer> {
                   child: VideoPlayer(_controller),
                 ),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   setState(() {
                     _controller.value.isPlaying

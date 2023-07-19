@@ -1,13 +1,10 @@
 library media_gallery;
 
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:ui' as ui;
 
@@ -24,7 +21,6 @@ class MediaGallery {
   static Future<List<dynamic>> listMediaCollections({
     required List<MediaType> mediaTypes,
   }) async {
-    assert(mediaTypes != null);
     final json = await _channel.invokeMethod('listMediaCollections', {
       'mediaTypes': mediaTypes.map((x) => _mediaTypeToJson(x)).toList(),
     });
@@ -39,7 +35,6 @@ class MediaGallery {
     int? skip,
     int? take,
   }) async {
-    assert(collection.id != null);
     mediaType ??= MediaType.image;
     final json = await _channel.invokeMethod('listMedias', {
       'collectionId': collection.id,

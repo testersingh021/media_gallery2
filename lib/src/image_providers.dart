@@ -71,7 +71,8 @@ class MediaCollectionThumbnailProvider
       MediaCollectionThumbnailProvider key, DecoderCallback decode) async {
     assert(key == this);
     final bytes = await collection.getThumbnail();
-    if (bytes == null || bytes.length == 0) return await decode(kTransparentImageBytes);
+    if (bytes == null || bytes.length == 0)
+      return await decode(kTransparentImageBytes);
 
     return await decode(bytes as Uint8List);
   }
@@ -102,8 +103,7 @@ class MediaCollectionThumbnailProvider
 class MediaImageProvider extends ImageProvider<MediaImageProvider> {
   MediaImageProvider({
     required this.media,
-  })  : assert(media != null),
-        assert(media.mediaType == MediaType.image);
+  }) : assert(media.mediaType == MediaType.image);
 
   final Media media;
 
@@ -148,7 +148,6 @@ class MediaImageProvider extends ImageProvider<MediaImageProvider> {
   @override
   String toString() => '$runtimeType("${media.id}")';
 }
-
 
 final Uint8List kTransparentImageBytes = new Uint8List.fromList(<int>[
   0x89,

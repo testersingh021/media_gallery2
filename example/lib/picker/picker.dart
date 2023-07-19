@@ -32,7 +32,7 @@ class MediaPicker extends StatefulWidget {
           content: Text(
               "This app can't have access to user media gallery. You must update authorizations in app settings."),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: Text('Open Settings'),
               onPressed: () {
                 openAppSettings();

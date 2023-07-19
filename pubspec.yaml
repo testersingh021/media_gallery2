@@ -1,11 +1,11 @@
 name: media_gallery2
 description: A Flutter plugin that lists native gallery items.
-version: 0.1.11
+version: 0.1.12
 homepage: https://github.com/testersingh021/media_gallery2
 #flutter packages pub publish
 environment:
-  sdk: ">=2.15.0-116.0.dev <3.0.0"
-  flutter: ">=1.22.0 <3.0.0"
+  sdk: '>=2.19.6 <3.0.0'
+  flutter: ">=2.5.0"
 
 dependencies:
   flutter:
